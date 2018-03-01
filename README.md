@@ -1,3 +1,3 @@
-## My First React App From Scratch
+## A React Todo List
 
-This seemed like something I needed to do at some point, so here it is. I followed this tutorial at [freeCodeCamp](https://medium.freecodecamp.org/learn-webpack-for-react-a36d4cac5060).
+Creating my own Todo List from scratch.
