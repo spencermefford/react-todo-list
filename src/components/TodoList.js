@@ -5,14 +5,13 @@ import TodoActions from "./TodoActions";
 import {todoList, mainTitle} from './Main.css';
 
 class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    todoItems: [],
+  };
 
-  }
-
-  handleChange(value) {
-    console.log('value', value)
-  }
+  handleChange = (value) => {
+    this.setState({ todoItems: this.state.todoItems.concat(value) });
+  };
 
   render() {
     return (
@@ -24,7 +23,7 @@ class TodoList extends React.Component {
           <ul>
             <TodoItem/>
           </ul>
-          
+
           <TodoActions/>
         </div>
       </div>
