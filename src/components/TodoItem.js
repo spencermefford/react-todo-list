@@ -7,7 +7,9 @@ class TodoItem extends React.Component {
 
   render() {
     return (
-      <li>Todo Item</li>
+      <li>
+        {this.props.item.title}
+      </li>
     )
   }
 }

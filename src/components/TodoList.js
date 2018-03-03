@@ -9,19 +9,19 @@ class TodoList extends React.Component {
     todoItems: [],
   };
 
-  handleChange = (value) => {
-    this.setState({ todoItems: this.state.todoItems.concat(value) });
-  };
-
   render() {
+    const todoItems = this.state.todoItems.map((item) => {
+      return <TodoItem key={item.id} item={item} onChange={this.handleItemChange} />
+    });
+
     return (
       <div>
-        <div key={1} className={mainTitle + ' ui header huge'}>Todo List</div>
-        <div key={2} className={todoList}>
-          <TodoInput onChange={this.handleChange}/>
+        <div className={mainTitle + ' ui header huge'}>Todo List</div>
+        <div className={todoList}>
+          <TodoInput onChange={this.handleInputChange}/>
 
           <ul>
-            <TodoItem/>
+            {todoItems}
           </ul>
 
           <TodoActions/>
@@ -29,6 +29,19 @@ class TodoList extends React.Component {
       </div>
     )
   }
+
+  handleInputChange = (value) => {
+    const item = {
+      id: new Date().getTime(),
+      title: value
+    };
+
+    this.setState({ todoItems: [...this.state.todoItems, item] });
+  };
+
+  handleItemChange = (item) => {
+    console.log('item', item);
+  };
 }
 
 export default TodoList;
