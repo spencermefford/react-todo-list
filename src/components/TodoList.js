@@ -25,7 +25,7 @@ class TodoList extends React.Component {
             {todoItems}
           </ul>
 
-          {this.state.todoItems.length > 0 && <TodoFooter todoItems={this.state.todoItems}/>}
+          {this.state.todoItems.length > 0 && <TodoFooter todoItems={this.state.todoItems} onClearCompleted={this.handleClearCompleted}/>}
         </div>
       </div>
     )
@@ -63,6 +63,13 @@ class TodoList extends React.Component {
     });
 
     this.setState({ todoItems: mapped.toArray() });
+  };
+
+  handleClearCompleted = () => {
+    const todoItems = List(this.state.todoItems);
+    const filtered = todoItems.filter((item) => item.isComplete !== true);
+
+    this.setState({ todoItems: filtered.toArray() });
   };
 }
 
