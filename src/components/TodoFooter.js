@@ -15,21 +15,24 @@ class TodoFooter extends React.Component {
         <div className={filters}>
 
         </div>
-        <div className={clearCompleted}>
-
-        </div>
+        {this.completedCount(this.props.todoItems) > 0 && <div className={clearCompleted}>Clear completed</div>}
       </div>
     )
+  }
+
+  completedCount(todoItems) {
+    return todoItems.reduce((sum, item) => {
+      return sum + (item.isComplete ? 1 : 0);
+    }, 0);
   }
 
   itemsLeft = (todoItems) => {
     const singular = 'item';
     const plural = 'items';
-    const count = todoItems.reduce((sum, item) => {
-      return sum + (item.isComplete ? 0 : 1);
-    }, 0);
+    const completedCount = this.completedCount(todoItems);
+    const itemsLeft = todoItems.length - completedCount;
 
-    return `${count} ${count === 1 ? singular : plural} left`;
+    return `${itemsLeft} ${itemsLeft === 1 ? singular : plural} left`;
   };
 }
 
