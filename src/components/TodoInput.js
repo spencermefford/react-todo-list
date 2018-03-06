@@ -32,8 +32,12 @@ class TodoInput extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.onChange(this.state.value);
-    this.setState({ value: '' });
+    const value = this.state.value;
+
+    if (value.length > 0) {
+      this.props.onChange(value);
+      this.setState({ value: '' });
+    }
   };
 }
 
