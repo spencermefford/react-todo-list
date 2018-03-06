@@ -12,7 +12,7 @@ class TodoList extends React.Component {
 
   render() {
     const todoItems = this.state.todoItems.map((item) => {
-      return <TodoItem key={item.id} item={item} onChange={this.handleItemChange} />
+      return <TodoItem key={item.id} item={item} onChange={this.handleItemChange} onDelete={this.handleItemDelete} />
     });
 
     return (
@@ -46,6 +46,13 @@ class TodoList extends React.Component {
     const index = todoItems.findIndex(i => i.id === item.id);
 
     this.setState({ todoItems: todoItems.set(index, item).toArray() });
+  };
+
+  handleItemDelete = (item) => {
+    const todoItems = List(this.state.todoItems);
+    const index = todoItems.findIndex(i => i.id === item.id);
+
+    this.setState({ todoItems: todoItems.delete(index)});
   };
 
   handleToggleAll = () => {

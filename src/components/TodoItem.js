@@ -6,16 +6,21 @@ class TodoItem extends React.Component {
     return (
       <li>
         <input type="checkbox" name="complete" checked={this.props.item.isComplete} onChange={this.handleChange} />
+        &nbsp;
         {this.props.item.title}
-        - {String(this.props.item.isComplete)}
+        &nbsp;
+        <span onClick={this.handleDelete}>Delete</span>
       </li>
     )
   }
 
   handleChange = () => {
     const changed = Map(this.props.item).set('isComplete', !this.props.item.isComplete).toObject();
-
     this.props.onChange(changed);
+  };
+
+  handleDelete = () => {
+    this.props.onDelete(this.props.item);
   };
 }
 
