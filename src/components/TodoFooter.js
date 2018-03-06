@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TodoActions extends React.Component {
+class TodoFooter extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,4 +12,4 @@ class TodoActions extends React.Component {
   }
 }
 
-export default TodoActions;
+export default TodoFooter;

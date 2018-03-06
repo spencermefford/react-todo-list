@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
-import TodoActions from "./TodoActions";
+import TodoFooter from "./TodoFooter";
 import { todoList, mainTitle } from './Main.css';
 import { List } from 'immutable';
 
@@ -25,7 +25,7 @@ class TodoList extends React.Component {
             {todoItems}
           </ul>
 
-          <TodoActions/>
+          {this.state.todoItems.length > 0 && <TodoFooter/>}
         </div>
       </div>
     )
