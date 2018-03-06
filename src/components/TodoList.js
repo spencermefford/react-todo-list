@@ -52,16 +52,17 @@ class TodoList extends React.Component {
     const todoItems = List(this.state.todoItems);
     const index = todoItems.findIndex(i => i.id === item.id);
 
-    this.setState({ todoItems: todoItems.delete(index)});
+    this.setState({ todoItems: todoItems.delete(index).toArray() });
   };
 
-  handleToggleAll = () => {
-    const todoItems = this.state.todoItems.map((item) => {
-      item.isComplete = !item.isComplete;
+  handleToggleAll = (isChecked) => {
+    const todoItems = List(this.state.todoItems);
+    const mapped = todoItems.map((item) => {
+      item.isComplete = isChecked;
       return item;
     });
 
-    this.setState({ todoItems });
+    this.setState({ todoItems: mapped.toArray() });
   };
 }
 
