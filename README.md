@@ -3,6 +3,7 @@
 Creating my own Todo List from scratch.
 
 ### Setup
+ - Install and use Node.js LTS
  - `yarn install`
 
 ### Running the app
