@@ -7,10 +7,14 @@ class TodoInput extends React.Component {
     isToggleChecked: false,
   };
 
+  componentDidMount() {
+    document.getElementById('input-form').querySelector('input[type="text"]').focus(); // Focus the form element
+  }
+
   render() {
     return (
       <div className={todoInput}>
-        <form onSubmit={this.handleSubmit}>
+        <form id='input-form' onSubmit={this.handleSubmit}>
           <input type="checkbox" checked={this.state.isToggleChecked} onChange={this.handleToggleChange} />
           <input type="text" value={this.state.value} onChange={this.handleInputChange} placeholder="What needs to be done today?" />
         </form>

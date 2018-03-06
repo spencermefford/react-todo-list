@@ -1,15 +1,16 @@
 import React from 'react';
 import { Map } from 'immutable';
+import { todoItem, todoItemLabel, todoItemDelete } from './Main.css';
 
 class TodoItem extends React.Component {
   render() {
     return (
-      <li>
+      <li className={todoItem}>
         <input type="checkbox" name="complete" checked={this.props.item.isComplete} onChange={this.handleChange} />
         &nbsp;
-        {this.props.item.title}
+        <span className={todoItemLabel}>{this.props.item.title}</span>
         &nbsp;
-        <span onClick={this.handleDelete}>Delete</span>
+        <span className={todoItemDelete} onClick={this.handleDelete}>X</span>
       </li>
     )
   }

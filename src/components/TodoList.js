@@ -15,7 +15,14 @@ class TodoList extends React.Component {
   render() {
     const filteredItems = this.filterItems(this.state.currentFilter, this.state.todoItems);
     const todoItems = filteredItems.map((item) => {
-      return <TodoItem key={item.id} item={item} onChange={this.handleItemChange} onDelete={this.handleItemDelete} />
+      return (
+        <TodoItem
+          key={item.id}
+          item={item}
+          onChange={this.handleItemChange}
+          onDelete={this.handleItemDelete}
+        />
+      )
     });
 
     return (
