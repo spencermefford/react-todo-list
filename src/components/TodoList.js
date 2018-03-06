@@ -13,7 +13,8 @@ class TodoList extends React.Component {
   };
 
   render() {
-    const todoItems = this.state.todoItems.map((item) => {
+    const filteredItems = this.filterItems(this.state.currentFilter, this.state.todoItems);
+    const todoItems = filteredItems.map((item) => {
       return <TodoItem key={item.id} item={item} onChange={this.handleItemChange} onDelete={this.handleItemDelete} />
     });
 
@@ -83,6 +84,19 @@ class TodoList extends React.Component {
 
   handleFilterChange = (filter) => {
     this.setState({ currentFilter: filter });
+  };
+
+  filterItems = (currentFilter, todoItems) => {
+    return todoItems.filter((item) => {
+      switch (currentFilter) {
+        case filtersMap.ACTIVE:
+          return item.isComplete !== true;
+        case filtersMap.COMPLETED:
+          return item.isComplete === true;
+        default:
+          return true;
+      }
+    })
   };
 }
 
