@@ -10,7 +10,7 @@ class TodoFooter extends React.Component {
     return (
       <div className={todoFooter}>
         <div className={itemsRemaining}>
-          {this.itemsLeft(this.props.todoItems)}
+          {this.itemsRemaining(this.props.todoItems)}
         </div>
         <div className={filters}>
 
@@ -26,13 +26,13 @@ class TodoFooter extends React.Component {
     }, 0);
   }
 
-  itemsLeft = (todoItems) => {
+  itemsRemaining = (todoItems) => {
     const singular = 'item';
     const plural = 'items';
     const completedCount = this.completedCount(todoItems);
-    const itemsLeft = todoItems.length - completedCount;
+    const itemsRemaining = todoItems.length - completedCount;
 
-    return `${itemsLeft} ${itemsLeft === 1 ? singular : plural} left`;
+    return `${itemsRemaining} ${itemsRemaining === 1 ? singular : plural} left`;
   };
 }
 
