@@ -4,10 +4,12 @@ import TodoItem from "./TodoItem";
 import TodoFooter from "./TodoFooter";
 import { todoList, mainTitle } from './Main.css';
 import { List } from 'immutable';
+import filtersMap from '../constants/filters';
 
 class TodoList extends React.Component {
   state = {
     todoItems: [],
+    currentFilter: filtersMap.ALL,
   };
 
   render() {
@@ -25,7 +27,14 @@ class TodoList extends React.Component {
             {todoItems}
           </ul>
 
-          {this.state.todoItems.length > 0 && <TodoFooter todoItems={this.state.todoItems} onClearCompleted={this.handleClearCompleted}/>}
+          {this.state.todoItems.length > 0 &&
+            <TodoFooter
+              todoItems={this.state.todoItems}
+              onClearCompleted={this.handleClearCompleted}
+              currentFilter={this.state.currentFilter}
+              onFilterChange={this.handleFilterChange}
+            />
+          }
         </div>
       </div>
     )
@@ -70,6 +79,10 @@ class TodoList extends React.Component {
     const filtered = todoItems.filter((item) => item.isComplete !== true);
 
     this.setState({ todoItems: filtered.toArray() });
+  };
+
+  handleFilterChange = (filter) => {
+    this.setState({ currentFilter: filter });
   };
 }
 
