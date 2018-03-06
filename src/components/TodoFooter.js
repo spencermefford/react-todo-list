@@ -28,7 +28,7 @@ class TodoFooter extends React.Component {
 
   itemsRemaining = (todoItems) => {
     const singular = 'item';
-    const plural = 'items';
+    const plural = `${singular}s`;
     const completedCount = this.completedCount(todoItems);
     const itemsRemaining = todoItems.length - completedCount;
 
