@@ -10,7 +10,6 @@ class TodoList extends React.Component {
     todoItems: [],
   };
 
-
   render() {
     const todoItems = this.state.todoItems.map((item) => {
       return <TodoItem key={item.id} item={item} onChange={this.handleItemChange} />
@@ -18,9 +17,9 @@ class TodoList extends React.Component {
 
     return (
       <div>
-        <div className={mainTitle + ' ui header huge'}>Todo List</div>
+        <div className={mainTitle + ' ui header huge'}>todos</div>
         <div className={todoList}>
-          <TodoInput onChange={this.handleInputChange}/>
+          <TodoInput onChange={this.handleInputChange} onToggleAll={this.handleToggleAll}/>
 
           <ul>
             {todoItems}
@@ -47,6 +46,15 @@ class TodoList extends React.Component {
     const index = todoItems.findIndex(i => i.id === item.id);
 
     this.setState({ todoItems: todoItems.set(index, item).toArray() });
+  };
+
+  handleToggleAll = () => {
+    const todoItems = this.state.todoItems.map((item) => {
+      item.isComplete = !item.isComplete;
+      return item;
+    });
+
+    this.setState({ todoItems });
   };
 }
 

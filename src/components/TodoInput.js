@@ -10,6 +10,7 @@ class TodoInput extends React.Component {
     return (
       <div className={todoInput}>
         <form onSubmit={this.handleSubmit}>
+          <div onClick={this.props.onToggleAll}>Toggle All</div>
           <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="What needs to be done today?" />
         </form>
       </div>
