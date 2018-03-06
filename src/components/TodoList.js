@@ -25,7 +25,7 @@ class TodoList extends React.Component {
             {todoItems}
           </ul>
 
-          {this.state.todoItems.length > 0 && <TodoFooter/>}
+          {this.state.todoItems.length > 0 && <TodoFooter todoItems={this.state.todoItems}/>}
         </div>
       </div>
     )
