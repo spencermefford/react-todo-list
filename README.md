@@ -1,6 +1,6 @@
 ## A React Todo List
 
-Creating my own Todo List from scratch.
+Creating my own Todo List from scratch. I used Immutable.js to avoid any mutations.
 
 ### Setup
  - Install and use Node.js LTS
