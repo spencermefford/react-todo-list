@@ -28,10 +28,7 @@ class TodoItem extends React.Component {
   }
 
   handleDoubleClick = () => {
-    console.log('handleDoubleClick');
-    this.setState({ isEditMode: true }, () => {
-      // this.input.select();
-    });
+    this.setState({ isEditMode: true });
   };
 
   handleCheckboxChange = () => {
