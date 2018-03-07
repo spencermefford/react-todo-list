@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { todoInputForm, toggleAllInput, todoInput } from './Main.css';
 
 class TodoInput extends React.Component {
@@ -41,7 +42,7 @@ class TodoInput extends React.Component {
     const value = this.state.value;
 
     if (value.length > 0) {
-      this.props.onChange(value.trim());
+      this.props.onChange(_.trim(value));
       this.setState({ value: '' });
     }
   };
