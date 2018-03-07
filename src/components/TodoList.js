@@ -43,13 +43,14 @@ class TodoList extends React.Component {
   }
 
   handleInputChange = (value) => {
+    const todoItems = List(this.state.todoItems);
     const item = {
       id: new Date().getTime(),
       title: value,
       isComplete: false,
     };
 
-    this.setState({ todoItems: [...this.state.todoItems, item] });
+    this.setState({ todoItems: todoItems.push(item).toArray() });
   };
 
   handleItemChange = (item) => {
