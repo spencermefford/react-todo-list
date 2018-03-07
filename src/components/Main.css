@@ -65,12 +65,10 @@ body {
     align-items: center;
 }
 
-.toggle-all-input {
+.toggle-all {
     flex: 0;
-}
-
-.toggle-all-input input {
-    margin: 0 10px 0 20px;
+    flex-basis: 35px;
+    padding-left: 20px;
 }
 
 .todo-input {
