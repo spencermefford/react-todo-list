@@ -29,7 +29,7 @@ class TodoList extends React.Component {
       <div>
         <div className={mainTitle + ' ui header huge'}>todos</div>
         <div className={todoList}>
-          <TodoInput todoItems={this.state.todoItems} onChange={this.handleInputChange} onToggleAll={this.handleToggleAll}/>
+          <TodoInput todoItems={this.state.todoItems} onItemAdded={this.handleItemAdded} onToggleAll={this.handleToggleAll}/>
 
           <ul>
             {todoItems}
@@ -42,7 +42,7 @@ class TodoList extends React.Component {
     )
   }
 
-  handleInputChange = (value) => {
+  handleItemAdded = (value) => {
     const todoItems = List(this.state.todoItems);
     const item = {
       id: new Date().getTime(),

@@ -42,7 +42,7 @@ class TodoInput extends React.Component {
     const value = this.state.value;
 
     if (value.length > 0) {
-      this.props.onChange(_.trim(value));
+      this.props.onItemAdded(_.trim(value));
       this.setState({ value: '' });
     }
   };
