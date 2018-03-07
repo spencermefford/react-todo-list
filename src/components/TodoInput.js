@@ -1,5 +1,5 @@
 import React from 'react';
-import {todoInput} from './Main.css';
+import { todoInputForm, toggleAllInput, todoInput } from './Main.css';
 
 class TodoInput extends React.Component {
   state = {
@@ -13,12 +13,14 @@ class TodoInput extends React.Component {
 
   render() {
     return (
-      <div className={todoInput}>
-        <form id='input-form' onSubmit={this.handleSubmit}>
+      <form id='input-form' onSubmit={this.handleSubmit} className={todoInputForm}>
+        <div className={toggleAllInput}>
           <input type="checkbox" checked={this.state.isToggleChecked} onChange={this.handleToggleChange} />
-          <input type="text" value={this.state.value} onChange={this.handleInputChange} placeholder="What needs to be done today?" />
-        </form>
-      </div>
+        </div>
+        <div className={todoInput}>
+          <input type="text" value={this.state.value} onChange={this.handleInputChange} placeholder="What needs to be done?" />
+        </div>
+      </form>
     )
   }
 
@@ -39,7 +41,7 @@ class TodoInput extends React.Component {
     const value = this.state.value;
 
     if (value.length > 0) {
-      this.props.onChange(value);
+      this.props.onChange(value.trim());
       this.setState({ value: '' });
     }
   };
