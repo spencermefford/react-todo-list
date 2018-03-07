@@ -35,14 +35,7 @@ class TodoList extends React.Component {
             {todoItems}
           </ul>
 
-          {this.state.todoItems.length > 0 &&
-            <TodoFooter
-              todoItems={this.state.todoItems}
-              onClearCompleted={this.handleClearCompleted}
-              currentFilter={this.state.currentFilter}
-              onFilterChange={this.handleFilterChange}
-            />
-          }
+          {this.renderTodoFooter()}
         </div>
       </div>
     )
@@ -105,6 +98,21 @@ class TodoList extends React.Component {
       }
     })
   };
+
+  renderTodoFooter = () => {
+    if (!this.state.todoItems.length) {
+      return;
+    }
+
+    return (
+      <TodoFooter
+        todoItems={this.state.todoItems}
+        onClearCompleted={this.handleClearCompleted}
+        currentFilter={this.state.currentFilter}
+        onFilterChange={this.handleFilterChange}
+      />
+    )
+  }
 }
 
 export default TodoList;

@@ -22,10 +22,12 @@ class TodoFooter extends React.Component {
         <div className={itemsRemaining}>
           {this.itemsRemaining(this.props.todoItems)}
         </div>
+
         <div className={filters}>
           {filterList}
         </div>
-        {this.completedCount(this.props.todoItems) > 0 && <div className={clearCompleted} onClick={this.handleClearCompleted}>Clear completed</div>}
+
+        {this.renderClearCompleted()}
       </div>
     )
   }
@@ -52,6 +54,16 @@ class TodoFooter extends React.Component {
 
     return `${itemsRemaining} ${itemsRemaining === 1 ? singular : plural} left`;
   };
+
+  renderClearCompleted = () => {
+    if (this.completedCount(this.props.todoItems) < 1) {
+      return;
+    }
+
+    return (
+      <div className={clearCompleted} onClick={this.handleClearCompleted}>Clear completed</div>
+    );
+  }
 }
 
 export default TodoFooter;
