@@ -2,7 +2,7 @@ import React from 'react';
 import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
 import TodoFooter from "./TodoFooter";
-import { todoList, mainTitle } from './Main.css';
+import { todoList, mainTitle, subtext } from './Main.css';
 import { List } from 'immutable';
 import filtersMap from '../constants/filters';
 
@@ -37,6 +37,7 @@ class TodoList extends React.Component {
 
           {this.renderTodoFooter()}
         </div>
+        <div className={subtext}>Double click todo to edit.</div>
       </div>
     )
   }
